@@ -52,9 +52,9 @@ describe('Integração: Login e Favoritos', () => {
     fireEvent.press(getByTestId('movie-card-603'));
 
     await waitFor(() => {
-      expect(getByTestId('movie-card-heart-603')).toBeTruthy();
+      expect(getByTestId('detail-favorite-button')).toBeTruthy();
     });
 
-    fireEvent.press(getByTestId('movie-card-heart-603'));
+    fireEvent.press(getByTestId('detail-favorite-button'));
   });
 });
