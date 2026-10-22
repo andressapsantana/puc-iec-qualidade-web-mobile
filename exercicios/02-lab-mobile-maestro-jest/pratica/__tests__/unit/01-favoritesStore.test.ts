@@ -1,9 +1,8 @@
-import useFavoriteStore from '../../src/store/favoritesStore';
+import { useFavoriteStore } from '../../src/store/favoritesStore';
 
 describe('FavoriteStore Unit Tests', () => {
   beforeEach(() => {
-    const favorites = useFavoriteStore.getState().favorites;
-    favorites.forEach(fav => useFavoriteStore.getState().removeFavorite(fav.id));
+    useFavoriteStore.setState({ favorites: [] });
   });
 
   it('1. deve iniciar com a lista de favoritos vazia', () => {
