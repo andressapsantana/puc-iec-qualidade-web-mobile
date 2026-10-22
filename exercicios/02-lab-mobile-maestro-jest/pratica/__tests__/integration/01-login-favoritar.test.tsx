@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import App from '../../../App';
+import App from '../../App';
 
 describe('Integração: Login e Favoritos', () => {
   it('teste 1: renderiza tela de login corretamente', async () => {
