@@ -1,8 +1,16 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import App from '../../App';
+import { useAuthStore } from '../../src/store/authStore';
+import useFavoriteStore from '../../src/store/favoriteStore';
 
 describe('Integração: Login e Favoritos', () => {
+  beforeEach(() => {
+    useAuthStore.getState().logout();
+    const favorites = useFavoriteStore.getState().favorites;
+    favorites.forEach(fav => useFavoriteStore.getState().removeFavorite(fav.id));
+  });
+
   it('teste 1: renderiza tela de login corretamente', async () => {
     const { getByTestId } = render(<App />);
     await waitFor(() => {
@@ -22,11 +30,12 @@ describe('Integração: Login e Favoritos', () => {
     fireEvent.press(getByTestId('login-submit-button'));
 
     await waitFor(() => {
-      expect(getByTestId('home-screen')).toBeTruthy();
+      expect(getByTestId('movielist-screen')).toBeTruthy();
     });
   });
 
   it('teste 3: favorita um filme após o login', async () => {
+    useAuthStore.getState().logout();
     const { getByTestId } = render(<App />);
 
     await waitFor(() => {
@@ -38,15 +47,15 @@ describe('Integração: Login e Favoritos', () => {
     fireEvent.press(getByTestId('login-submit-button'));
 
     await waitFor(() => {
-      expect(getByTestId('home-screen')).toBeTruthy();
+      expect(getByTestId('movielist-screen')).toBeTruthy();
     });
 
-    fireEvent.press(getByTestId('movie-item-0'));
+    fireEvent.press(getByTestId('movie-card-603'));
 
     await waitFor(() => {
-      expect(getByTestId('favorite-button')).toBeTruthy();
+      expect(getByTestId('movie-card-heart-603')).toBeTruthy();
     });
 
-    fireEvent.press(getByTestId('favorite-button'));
+    fireEvent.press(getByTestId('movie-card-heart-603'));
   });
 });
