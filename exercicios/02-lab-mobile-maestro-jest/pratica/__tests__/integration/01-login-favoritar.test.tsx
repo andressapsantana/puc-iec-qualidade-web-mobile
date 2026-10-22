@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import App from '../../App';
 import { useAuthStore } from '../../src/store/authStore';
-import { useFavoriteStore } from '../../src/store/favoritesStore';
+import useFavoriteStore from '../../src/store/favoritesStore';
 
 describe('Integração: Login e Favoritos', () => {
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { useFavoriteStore } from '../../src/store/favoritesStore';
+import useFavoriteStore from '../../src/store/favoritesStore';
 
 describe('FavoriteStore Unit Tests', () => {
   beforeEach(() => {
