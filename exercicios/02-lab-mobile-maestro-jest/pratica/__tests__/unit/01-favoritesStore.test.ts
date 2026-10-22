@@ -14,19 +14,19 @@ describe('FavoriteStore Unit Tests', () => {
     const movie = { id: 603, title: 'Matrix' };
     
     // Adiciona
-    useFavoritesStore.getState().toggleFavorite(movie as any);
+    useFavoritesStore.getState().addFavorite(movie as any);
     let state = useFavoritesStore.getState();
     expect(state.favorites).toHaveLength(1);
 
-    // Remove (toggle novamente)
-    useFavoritesStore.getState().toggleFavorite(movie as any);
+    // Remove
+    useFavoritesStore.getState().removeFavorite(603);
     state = useFavoritesStore.getState();
     expect(state.favorites).toHaveLength(0);
   });
 
   it('3. deve verificar corretamente se um filme é favorito', () => {
     const movie = { id: 603, title: 'Matrix' };
-    useFavoritesStore.getState().toggleFavorite(movie as any);
+    useFavoritesStore.getState().addFavorite(movie as any);
 
     const isFav = useFavoritesStore.getState().isFavorite(603);
     expect(isFav).toBe(true);
