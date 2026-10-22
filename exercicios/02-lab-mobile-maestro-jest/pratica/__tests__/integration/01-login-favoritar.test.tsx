@@ -2,12 +2,12 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import App from '../../App';
 import { useAuthStore } from '../../src/store/authStore';
-import { useFavoriteStore } from '../../src/store/favoritesStore';
+import { useFavoritesStore } from '../../src/store/favoritesStore';
 
 describe('Integração: Login e Favoritos', () => {
   beforeEach(() => {
     useAuthStore.getState().logout();
-    useFavoriteStore.setState({ favorites: [] });
+    useFavoritesStore.setState({ favorites: [] });
   });
 
   it('teste 1: renderiza tela de login corretamente', async () => {
