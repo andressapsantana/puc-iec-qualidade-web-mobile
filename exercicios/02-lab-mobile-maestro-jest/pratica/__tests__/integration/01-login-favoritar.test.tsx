@@ -17,9 +17,9 @@ describe('Integração: Login e Favoritos', () => {
       expect(getByTestId('login-screen')).toBeTruthy();
     });
 
-    fireEvent.changeText(getByTestId('email-input'), 'aluno@puc.br');
-    fireEvent.changeText(getByTestId('password-input'), '1234');
-    fireEvent.press(getByTestId('login-button'));
+    fireEvent.changeText(getByTestId('login-email-input'), 'aluno@puc.br');
+    fireEvent.changeText(getByTestId('login-password-input'), '1234');
+    fireEvent.press(getByTestId('login-submit-button'));
 
     await waitFor(() => {
       expect(getByTestId('home-screen')).toBeTruthy();
@@ -33,9 +33,9 @@ describe('Integração: Login e Favoritos', () => {
       expect(getByTestId('login-screen')).toBeTruthy();
     });
 
-    fireEvent.changeText(getByTestId('email-input'), 'aluno@puc.br');
-    fireEvent.changeText(getByTestId('password-input'), '1234');
-    fireEvent.press(getByTestId('login-button'));
+    fireEvent.changeText(getByTestId('login-email-input'), 'aluno@puc.br');
+    fireEvent.changeText(getByTestId('login-password-input'), '1234');
+    fireEvent.press(getByTestId('login-submit-button'));
 
     await waitFor(() => {
       expect(getByTestId('home-screen')).toBeTruthy();
