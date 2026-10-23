@@ -8,7 +8,7 @@ export class CatalogPage {
   constructor(page: Page) {
     this.page = page;
     this.pulpFictionCard = page.getByRole('article').filter({ hasText: 'Pulp Fiction' });
-    this.favoritesButton = page.getByRole('button', { name: /Favoritos/i });
+    this.favoritesButton = page.getByTestId('movielist-favorites-button');
   }
 
   async goto() {
