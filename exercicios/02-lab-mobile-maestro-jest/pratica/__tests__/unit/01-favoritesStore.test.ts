@@ -1,9 +1,31 @@
 import { useFavoritesStore } from '../../src/store/favoritesStore';
 
 describe('FavoriteStore Unit Tests', () => {
-  it('1. deve mostrar as propriedades e funções disponíveis no store', () => {
+  beforeEach(() => {
+    useFavoritesStore.getState().clear();
+  });
+
+  it('1. deve iniciar com a lista de favoritos vazia', () => {
     const state = useFavoritesStore.getState();
-    console.log('--- MÉTODOS DISPONÍVEIS NO FAVORITESSTORE:', Object.keys(state));
-    expect(state).toBeDefined();
+    expect(state.ids).toEqual([]);
+  });
+
+  it('2. deve adicionar e remover um filme dos favoritos com sucesso', () => {
+    // Adiciona
+    useFavoritesStore.getState().add(603);
+    let state = useFavoritesStore.getState();
+    expect(state.ids).toContain(603);
+
+    // Remove
+    useFavoritesStore.getState().remove(603);
+    state = useFavoritesStore.getState();
+    expect(state.ids).not.toContain(603);
+  });
+
+  it('3. deve verificar corretamente se um filme é favorito', () => {
+    useFavoritesStore.getState().add(603);
+
+    const isFav = useFavoritesStore.getState().isFavorite(603);
+    expect(isFav).toBe(true);
   });
 });
