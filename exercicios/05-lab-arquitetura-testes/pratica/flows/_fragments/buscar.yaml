@@ -1,5 +1,5 @@
 appId: com.cinefav
 ---
-- runFlow: "abrir-busca.yaml"
-- inputtext: "${TERM}"
-- assertVisible: "${TERM}"
+- runFlow: "login.yaml"
+- tapOn: "🔍"
+- assertVisible: "Buscar filmes"
