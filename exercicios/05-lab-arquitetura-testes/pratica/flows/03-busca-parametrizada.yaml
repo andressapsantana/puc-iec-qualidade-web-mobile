@@ -1,13 +1,10 @@
 appId: com.cinefav
 ---
-# 1. Primeira busca passando o termo por env
 - runFlow:
     file: "_fragments/buscar.yaml"
     env:
-      TERMO: "Matrix"
-
-# 2. Segunda busca passando outro termo por env
+      TERM: "Matrix"
 - runFlow:
     file: "_fragments/buscar.yaml"
     env:
-      TERMO: "Interstellar"
+      TERM: "Interstellar"

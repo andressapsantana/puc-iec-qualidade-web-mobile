@@ -1,3 +1,4 @@
 appId: com.cinefav
 ---
 - tapOn: "❤️"
+- assertVisible: "Remover"

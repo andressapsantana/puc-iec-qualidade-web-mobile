@@ -1,5 +1,5 @@
 appId: com.cinefav
 ---
 - runFlow: "abrir-busca.yaml"
-- inputtext: "${TERMO}"
-- assertVisible: "${TERMO}"
+- inputtext: "${TERM}"
+- assertVisible: "${TERM}"
