@@ -9,3 +9,4 @@ appId: com.cinefav
     text: "123456"
 - tapOn:
     id: "${output.login.entrar}"
+- assertVisible: "🎬"
