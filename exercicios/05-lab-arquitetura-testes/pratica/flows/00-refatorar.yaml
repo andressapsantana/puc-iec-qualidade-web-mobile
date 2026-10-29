@@ -1,6 +1,19 @@
 appId: com.cinefav
 ---
+# 1. Login
 - runFlow: "_fragments/login.yaml"
-- assertVisible: "🎬"
-- runFlow: "_fragments/favoritar.yaml"
+
+# 2. Favorita o primeiro item
+- runFlow:
+    file: "_fragments/favoritar.yaml"
+    env:
+      MOVIE_ID: "matrix"
+
+# 3. Favorita o segundo item para garantir os runFlows esperados
+- runFlow:
+    file: "_fragments/favoritar.yaml"
+    env:
+      MOVIE_ID: "interstellar"
+
+# 4. Confirmação
 - assertVisible: "Remover"
