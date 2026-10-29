@@ -1,17 +1,10 @@
 appId: com.cinefav
 ---
-# 1. Carrega os elementos do Page Object
 - evalScript: "elements/login.js"
 - evalScript: "elements/movielist.js"
-
-# 2. Executa o fluxo de login
 - runFlow: "_fragments/login.yaml"
-
-# 3. Favorita o filme usando o POM
 - tapOn:
     id: "${output.lista.coracaoMatrix}"
 - assertVisible: "Remover"
-
-# 4. Remove dos favoritos e valida que desapareceu
 - tapOn: "Remover"
 - assertNotVisible: "Remover"
