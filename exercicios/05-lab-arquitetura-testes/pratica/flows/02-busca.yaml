@@ -1,5 +1,8 @@
 appId: com.cinefav
 ---
 - runFlow: "_fragments/abrir-busca.yaml"
-- inputtext: "Matrix"
-- assertVisible: "Matrix"
+- inputText:
+    id: "search-input"
+    text: "Matrix"
+- assertVisible:
+    id: "movie-card-603"

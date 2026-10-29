@@ -1,5 +1,7 @@
 appId: com.cinefav
 ---
 - runFlow: "login.yaml"
-- tapOn: "🔍"
-- assertVisible: "Buscar filmes"
+- tapOn:
+    id: "search-tab-button"
+- assertVisible:
+    id: "search-screen"
