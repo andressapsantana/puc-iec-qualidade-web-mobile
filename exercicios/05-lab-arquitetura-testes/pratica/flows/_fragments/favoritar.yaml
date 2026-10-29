@@ -1,6 +1,5 @@
 appId: com.cinefav
 ---
-- tapOn:
-    id: "movie-card-heart-.*"
-- assertVisible:
-    id: "favorites-item-.*"
+- assertVisible: "❤️"
+- tapOn: "❤️"
+- assertVisible: "Remover"
