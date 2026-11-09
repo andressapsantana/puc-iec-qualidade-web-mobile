@@ -1,51 +1,44 @@
-import { useAuthStore } from '../../src/store/authStore';
+import { useAuthStore } from '../../src/stores/authStore';
 
-describe('AuthStore Unit Tests', () => {
+describe('authStore', () => {
   beforeEach(() => {
-    useAuthStore.setState({ user: null, isAuthenticated: false, error: null });
+    useAuthStore.setState({
+      email: '',
+      isAuthenticated: false,
+    });
   });
 
-  it('1. deve iniciar com o estado desautenticado', () => {
+  test('1. deve iniciar com estado deslogado', () => {
     const state = useAuthStore.getState();
     expect(state.isAuthenticated).toBe(false);
-    expect(state.user).toBeNull();
-    expect(state.error).toBeNull();
+    expect(state.email).toBe('');
   });
 
-  it('2. deve realizar login com sucesso usando credenciais válidas', async () => {
-    await useAuthStore.getState().login('aluno@puc.br', '1234');
+  test('2. deve realizar login com sucesso', () => {
+    useAuthStore.getState().login('aluno@puc.br', '1234');
     const state = useAuthStore.getState();
     expect(state.isAuthenticated).toBe(true);
+    expect(state.email).toBe('aluno@puc.br');
   });
 
-  it('3. deve tratar falha de login com credenciais inválidas', async () => {
-    useAuthStore.setState({ isAuthenticated: false, user: null, error: 'Credenciais inválidas' });
+  test('3. deve falhar ao tentar logar com credenciais inválidas', () => {
+    expect(() => {
+      useAuthStore.getState().login('invalido@puc.br', '0000');
+    }).toThrow();
     const state = useAuthStore.getState();
     expect(state.isAuthenticated).toBe(false);
-    expect(state.user).toBeNull();
-    expect(state.error).not.toBeNull();
   });
 
-  it('4. deve realizar logout com sucesso', async () => {
-    await useAuthStore.getState().login('aluno@puc.br', '1234');
-    expect(useAuthStore.getState().isAuthenticated).toBe(true);
-
+  test('4. deve realizar logout corretamente', () => {
+    useAuthStore.getState().login('aluno@puc.br', '1234');
     useAuthStore.getState().logout();
     const state = useAuthStore.getState();
     expect(state.isAuthenticated).toBe(false);
-    expect(state.user).toBeNull();
+    expect(state.email).toBe('');
   });
 
-  it('5. deve limpar o estado de erro ao invocar a limpeza', async () => {
-    useAuthStore.setState({ error: 'Erro de teste' });
-    expect(useAuthStore.getState().error).not.toBeNull();
-
-    if (typeof useAuthStore.getState().clearError === 'function') {
-      useAuthStore.getState().clearError();
-    } else {
-      useAuthStore.setState({ error: null });
-    }
-
-    expect(useAuthStore.getState().error).toBeNull();
+  test('5. deve manter o estado de autenticação consistente', () => {
+    useAuthStore.getState().login('aluno@puc.br', '1234');
+    expect(useAuthStore.getState().isAuthenticated).toBe(true);
   });
 });

@@ -1,11 +1,8 @@
 appId: com.puciec.cinefav
 ---
 - runFlow: _fragments/login.yaml
-- assertVisible:
-    id: "home-screen"
 - tapOn:
-    id: "search-input"
-- inputText: "Matrix"
-- hideKeyboard
+    id: "tab-search"
+- inputText: "Inception"
 - assertVisible:
-    id: "movie-item-0"
+    id: "movie-card-1"

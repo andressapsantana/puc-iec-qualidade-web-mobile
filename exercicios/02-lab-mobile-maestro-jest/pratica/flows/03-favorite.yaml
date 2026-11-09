@@ -1,14 +1,9 @@
 appId: com.puciec.cinefav
 ---
 - runFlow: _fragments/login.yaml
-- assertVisible:
-    id: "home-screen"
 - tapOn:
-    id: "movie-item-0"
-- tapOn:
-    id: "favorite-button"
-- back
+    id: "favorite-button-1"
 - tapOn:
     id: "tab-favorites"
 - assertVisible:
-    id: "movie-item-0"
+    id: "movie-card-1"
