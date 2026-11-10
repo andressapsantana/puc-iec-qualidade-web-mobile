@@ -40,9 +40,3 @@ describe('authStore', () => {
     expect(useAuthStore.getState().isAuthenticated).toBe(true);
   });
 });
-
-  test('5. deve manter o estado de autenticação consistente', () => {
-    useAuthStore.getState().login('aluno@puc.br', '1234');
-    expect(useAuthStore.getState().isAuthenticated).toBe(true);
-  });
-});
