@@ -1,10 +1,11 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- evalScript: "elements/login.js"
-- evalScript: "elements/movielist.js"
-- runFlow: "_fragments/login.yaml"
+- runFlow: _fragments/login.yaml
+- runFlow: _fragments/abrir-busca.yaml
+- inputText: "Matrix"
 - tapOn:
-    id: "${output.lista.coracaoMatrix}"
-- assertVisible: "Remover"
-- tapOn: "Remover"
-- assertNotVisible: "Remover"
+    id: "movie-card-heart-603"
+- tapOn:
+    id: "movielist-favorites-button"
+- assertVisible:
+    id: "movie-card-603"

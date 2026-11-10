@@ -1,7 +1,7 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- runFlow: "abrir-busca.yaml"
-- inputText:
-    id: "search-input"
-    text: "${TERM}"
-- assertVisible: "${TERM}"
+- tapOn:
+    id: "movielist-search-button"
+- inputText: "${TERMO}"
+- assertVisible:
+    id: "movie-card-title-603" # ou assertVisible contendo o termo

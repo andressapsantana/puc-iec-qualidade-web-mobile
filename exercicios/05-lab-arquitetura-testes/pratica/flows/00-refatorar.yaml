@@ -1,19 +1,6 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-# 1. Login
-- runFlow: "_fragments/login.yaml"
-
-# 2. Favorita o primeiro item
-- runFlow:
-    file: "_fragments/favoritar.yaml"
-    env:
-      MOVIE_ID: "matrix"
-
-# 3. Favorita o segundo item para garantir os runFlows esperados
-- runFlow:
-    file: "_fragments/favoritar.yaml"
-    env:
-      MOVIE_ID: "interstellar"
-
-# 4. Confirmação
-- assertVisible: "Remover"
+- runFlow: _fragments/login.yaml
+- runFlow: _fragments/favoritar.yaml
+- assertVisible:
+    id: "movie-card-heart-603"

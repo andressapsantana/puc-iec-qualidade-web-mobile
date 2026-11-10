@@ -1,10 +1,11 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
+- runFlow: _fragments/login.yaml
 - runFlow:
-    file: "_fragments/buscar.yaml"
+    file: _fragments/buscar.yaml
     env:
-      TERM: "Matrix"
+      TERMO: "Matrix"
 - runFlow:
-    file: "_fragments/buscar.yaml"
+    file: _fragments/buscar.yaml
     env:
-      TERM: "Interstellar"
+      TERMO: "Inception"

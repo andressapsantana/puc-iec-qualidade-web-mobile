@@ -1,12 +1,15 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- evalScript: "elements/login.js"
-- inputText:
-    id: "${output.login.email}"
-    text: "teste@email.com"
-- inputText:
-    id: "${output.login.senha}"
-    text: "123456"
+- runScript: 
+    file: elements/loginElements.js
+    output: login
 - tapOn:
-    id: "${output.login.entrar}"
-- assertVisible: "🎬"
+    id: "${login.emailInput}"
+- inputText: "aluno@puc.br"
+- tapOn:
+    id: "${login.passwordInput}"
+- inputText: "1234"
+- tapOn:
+    id: "${login.submitButton}"
+- assertVisible:
+    id: "movielist-screen"

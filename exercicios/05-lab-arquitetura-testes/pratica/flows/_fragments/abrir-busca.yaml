@@ -1,5 +1,4 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- runFlow: "login.yaml"
-- tapOn: "🔍"
-- assertVisible: "Buscar filmes"
+- tapOn:
+    id: "movielist-search-button"

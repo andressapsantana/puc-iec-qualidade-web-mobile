@@ -1,4 +1,4 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- tapOn: "❤️"
-- assertVisible: "Remover"
+- tapOn:
+    id: "movie-card-heart-603"

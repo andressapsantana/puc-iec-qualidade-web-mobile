@@ -1,5 +1,7 @@
-appId: com.cinefav
+appId: com.puciec.cinefav
 ---
-- runFlow: "_fragments/abrir-busca.yaml"
+- runFlow: _fragments/login.yaml
+- runFlow: _fragments/abrir-busca.yaml
 - inputText: "Matrix"
-- assertVisible: "Matrix"
+- assertVisible:
+    id: "movie-card-603"
