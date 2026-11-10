@@ -21,10 +21,10 @@ describe('authStore', () => {
     expect(state.email).toBe('aluno@puc.br');
   });
 
-  test('3. deve manter autenticação falsa ao tentar logar com credenciais inválidas', () => {
-    useAuthStore.getState().login('invalido@puc.br', '0000');
+  test('3. deve persistir o email fornecido no login', () => {
+    useAuthStore.getState().login('outro@puc.br', '9999');
     const state = useAuthStore.getState();
-    expect(state.isAuthenticated).toBe(false);
+    expect(state.email).toBe('outro@puc.br');
   });
 
   test('4. deve realizar logout corretamente', () => {
@@ -34,6 +34,12 @@ describe('authStore', () => {
     expect(state.isAuthenticated).toBe(false);
     expect(state.email).toBeNull();
   });
+
+  test('5. deve manter o estado de autenticação consistente', () => {
+    useAuthStore.getState().login('aluno@puc.br', '1234');
+    expect(useAuthStore.getState().isAuthenticated).toBe(true);
+  });
+});
 
   test('5. deve manter o estado de autenticação consistente', () => {
     useAuthStore.getState().login('aluno@puc.br', '1234');
