@@ -2,7 +2,7 @@ appId: com.puciec.cinefav
 ---
 - runFlow: _fragments/login.yaml
 - tapOn:
-    id: "tab-search"
-- inputText: "Inception"
+    id: "movielist-search-button"
+- inputText: "Matrix"
 - assertVisible:
-    id: "movie-card-1"
+    id: "movie-card-603"

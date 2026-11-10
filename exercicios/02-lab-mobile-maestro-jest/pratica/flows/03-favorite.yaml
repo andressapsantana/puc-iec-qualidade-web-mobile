@@ -2,8 +2,8 @@ appId: com.puciec.cinefav
 ---
 - runFlow: _fragments/login.yaml
 - tapOn:
-    id: "favorite-button-1"
+    id: "movie-card-heart-603"
 - tapOn:
-    id: "tab-favorites"
+    id: "movielist-favorites-button"
 - assertVisible:
-    id: "movie-card-1"
+    id: "movie-card-603"
