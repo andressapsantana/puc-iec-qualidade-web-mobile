@@ -1,4 +1,4 @@
-import { useAuthStore } from '../../src/stores/authStore';
+import { useAuthStore } from '../../src/store/authStore';
 
 describe('authStore', () => {
   beforeEach(() => {

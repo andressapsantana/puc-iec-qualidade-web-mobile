@@ -1,22 +1,20 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react-native';
+import { render, fireEvent } from '@testing-library/react-native';
 import App from '../../App';
 
 describe('Integração: Login e Favoritar', () => {
   test('2. deve realizar login e navegar para a tela principal', async () => {
     const { getByTestId, findByTestId } = render(<App />);
 
-    // Tenta encontrar o campo de email; se já estiver logado, vai direto para a listagem
     try {
       const emailInput = getByTestId('login-email-input');
       fireEvent.changeText(emailInput, 'aluno@puc.br');
       fireEvent.changeText(getByTestId('login-password-input'), '1234');
       fireEvent.press(getByTestId('login-submit-button'));
     } catch (e) {
-      // Já está logado, prossegue
+      // Já logado
     }
 
-    // Aguarda a tela principal de filmes aparecer
     const mainScreen = await findByTestId('movielist-screen');
     expect(mainScreen).toBeTruthy();
   });
@@ -29,13 +27,14 @@ describe('Integração: Login e Favoritar', () => {
       fireEvent.changeText(getByTestId('login-password-input'), '1234');
       fireEvent.press(getByTestId('login-submit-button'));
     } catch (e) {
-      // Já está logado
+      // Já logado
     }
 
-    // Aguarda carregar a listagem e clica no botão de favoritar do filme Matrix
     await findByTestId('movielist-screen');
     const favoriteButton = await findByTestId('movie-card-heart-603');
-    fireEvent.press(favoriteButton);
+    
+    // Passa o mock de stopPropagation para evitar o erro do evento nativo
+    fireEvent.press(favoriteButton, { stopPropagation: () => {} });
 
     expect(favoriteButton).toBeTruthy();
   });
